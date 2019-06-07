@@ -1,0 +1,225 @@
+﻿@model   List<Domain.Entities.EntitiModel.Cadastro>
+
+@{
+    ViewBag.Title = "VisualizarRegistros";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+
+
+@{
+    int total = Model.Count;
+}
+
+<h2 style="text-align:-webkit-auto;font-family: fantasy;font-size: x-large;font-weight: inherit;">
+    REGISTROS DE OCORRENCIAS <span style="float:right">TOTAL DE REGISTROS:&nbsp;@total&nbsp;</span></h2>
+
+<table id="customers">
+    <tr style="padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #4CAF50; color: white;">
+        <td>CIDADE</td>       
+        <td>BAIRRO</td>       
+        <td>ENCAMINHADO POR:</td>
+        <td>DESLIGAMENTO</td>
+        <td>TIPO DE VIOLENCIA</td>
+        <td>VINC COM O AGRESSOR</td>
+        <td>OBSERVAÇÕES</td>    
+        <td>AÇÕES</td>       
+    </tr>
+
+    @{
+
+        var retorno = Model;
+
+        foreach (var item in Model)
+        {
+            <tr>               
+               <td>
+                 <span>@item.Cidade</span>
+               </td>
+               <td>
+                 <span>@item.Bairro</span>
+               </td>
+               <td>
+                 <span>@item.EncaminhadaPor</span>
+               </td>
+                <td>
+                  <span>@item.Desligamento</span>
+                </td>
+                <td>
+                 <span>@item.TipodeViolência</span>
+                </td>
+                <td>
+                  <span>@item.VínculoComAgressor</span>
+                </td>
+                <td>
+                  <span>@item.Observacoes</span>
+                </td>
+                <td style="display: inline-flex;" >
+                    &nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-edit" style="float:left;cursor:pointer;"></span>&nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-zoom-in" style="float:left;cursor:pointer;"></span>&nbsp;&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-remove" style="float:left;cursor:pointer;"></span>&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;
+                    @*<input class="glyphicon glyphicon-th" type="button" name="name" value="EDITAR" style="color: white;text-shadow: yellow -1px 0px 5px;border-radius: 33px;background-color: darkslategrey;" />              
+                    <input class="btn btn-default"  type="button" name="name" value="DELETAR" style="color: white;text-shadow: yellow -1px 0px 5px;border-radius: 33px;background-color: darkslategrey;" />              
+                    <input class="btn btn-default"  type="button" name="name" value="ENVIAR" style="color: white;text-shadow: yellow -1px 0px 5px;border-radius: 33px;background-color: darkslategrey;" />*@
+                </td>
+            </tr>
+
+            @*<dt>
+                    item.NumeroCadastrado
+                </dt>
+                <dd>
+                    item.NumeroCadastrado
+                </dd>
+                <dt>
+                    item.DatadeNascimento
+                </dt>
+                <dd>
+                    item.DatadeNascimento
+                </dd>
+                <dt>
+                    item.Escolaridade
+                </dt>
+                <dd>
+                    item.Escolaridade
+                </dd>
+                <dt>
+                    item.Cidade
+                </dt>
+                <dd>
+                    item.Cidade
+                </dd>
+                <dt>
+                    item.BO
+                </dt>
+                <dd>
+                    item.BO
+                </dd>
+                <dt>
+                    item.MP
+                </dt>
+                <dd>
+                    item.MP
+                </dd>
+                <dt>
+                    item.Bairro
+                </dt>
+                <dd>
+                    item.Bairro
+                </dd>
+                <dt>
+                    item.EstadoCivil
+                </dt>
+                <dd>
+                    item.EstadoCivil
+                </dd>
+                <dt>
+                    item.Filhos
+                </dt>
+                <dd>
+                    item.Filhos
+                </dd>
+                <dt>
+                    item.TipodeViolência
+                </dt>
+                <dd>
+                    item.TipodeViolência
+                </dd>
+                <dt>
+                    item.UsoDeAlcool_Drogas_Vitima
+                </dt>
+                <dd>
+                    item.UsoDeAlcool_Drogas_Vitima
+                </dd>
+                <dt>
+                    item.UsoDeAlcool_Drogas_Agressor
+                </dt>
+                <dd>
+                    item.UsoDeAlcool_Drogas_Agressor
+                </dd>
+                <dt>
+                    item.VínculoComAgressor
+                </dt>
+                <dd>
+                    item.VínculoComAgressor
+                </dd>
+                <dt>
+                    item.EncaminhadaPor
+                </dt>
+                <dd>
+                    item.EncaminhadaPor
+                </dd>
+                <dt>
+                    item.Situacao
+                </dt>
+                <dd>
+                    item.Situacao
+                </dd>
+                <dt>
+                    item.Motivododesligamento
+                </dt>
+                <dd>
+                    item.Motivododesligamento
+                </dd>
+                <dt>
+                    item.Desligamento
+                </dt>
+                <dd>
+                    item.Desligamento
+                </dd>
+                <dt>
+                    item.Observacoes
+                </dt>
+                <dd>
+                    item.Observacoes
+                </dd>
+                <dt>
+                    item.DataCreate
+                </dt>
+                <dd>
+                    item.DataCreate
+                </dd>
+                <dt>
+                    item.DataUpdate
+                </dt>
+                <dd>
+                    item.DataUpdate
+                  </dd>*@
+        }
+
+
+
+    }
+
+</table>
+
+
