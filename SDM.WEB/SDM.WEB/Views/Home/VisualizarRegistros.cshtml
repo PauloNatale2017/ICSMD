@@ -2,19 +2,26 @@
 
 @{
     ViewBag.Title = "VisualizarRegistros";
+    //Layout = null;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <link href="~/Content/angular-block-ui.css" rel="stylesheet" />
-<link href="~/Content/bootstrap.css" rel="stylesheet" />
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/ui-grid.css" rel="stylesheet" />
 
-<script src="~/js/Visulizar.js"></script>
+<script src="~/js/Visulizar.js"></script>*@
+
+
 
 <style>
     #customers {
@@ -43,6 +50,22 @@
             background-color: #4CAF50;
             color: white;
         }
+
+        /*.modal-dialog {
+         width: 600px;
+         margin: 13% 2% 1% -22% !important;
+      }*/
+
+
+        .modal-dialog 
+        {
+           right: auto !important;
+           left: 0% !important;
+           width: 600px !important;
+           padding-top: 30px !important;
+           padding-bottom: 30px !important;
+         }
+
 </style>
 
 @{ int total = Model.Count; }
@@ -61,8 +84,86 @@
     });
 </script>
 
+@*style="float:left;margin:3% 3% 3% 3%"*@
+
 <div ng-controller="CtrlVisualizar">
 
+
+    <div class="form-group">
+
+        <div class="modal fade" id="Edit">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Modal body..
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="Visualizar">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Modal body..
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="remover">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Modal body..
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <div class="form-group">
         <div class="row">
@@ -72,144 +173,76 @@
             </h2>
             <input class="form-control" id="myInput" type="text" placeholder="Search..">
         </div>
-    </div>
+    </div>   
 
-
-    <div id="OcorrenciasGrid"
-         ui-grid="OcorrenciasGrid"
-         ui-grid-selection
-         ui-grid-pagination
-         ui-grid-auto-resize
-         ui-grid-edit
-         ui-grid-cellnav
-         ui-grid-resize-columns
-         ui-grid-move-columns
-         resize style="overflow-y: no-display !important;float: left; margin-top: 0px;width: 100%; height: 400px !important;">
-    </div>
-
-    <table class="table" id="customers">
-        <tr style="padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #4CAF50; color: white;">
-            <td>CIDADE</td>
-            <td>BAIRRO</td>
-            <td>ENCAMINHADO POR:</td>
-            <td>DESLIGAMENTO</td>
-            <td>TIPO DE VIOLENCIA</td>
-            <td>VINC COM O AGRESSOR</td>
-            <td>OBSERVAÇÕES</td>
-            <td>AÇÕES</td>
-        </tr>
-        @{
-        var retorno = Model;
-        foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <span data-toggle="tooltip" title="Cidade onde mora!">@item.Cidade</span>
-                </td>
-                <td>
-                    <span>@item.Bairro</span>
-                </td>
-                <td>
-                    <span data-toggle="tooltip" title="Me">@item.EncaminhadaPor</span>
-                </td>
-                <td>
-                    <span data-toggle="tooltip" title="Hooray!">@item.Desligamento</span>
-                </td>
-                <td>
-                    <span data-toggle="tooltip" title="Hooray!">@item.TipodeViolência</span>
-                </td>
-                <td>
-                    <span data-toggle="tooltip" title="Hooray!">@item.VínculoComAgressor</span>
-                </td>
-                <td>
-                    <span>@item.Observacoes</span>
-                </td>
-                <td style="display: inline-flex;">
-                    &nbsp;&nbsp;
-                    <span class="glyphicon glyphicon-edit" style="float:left;cursor:pointer;" data-toggle="modal" data-target="#Edit" title="Editar os dados cadastrados!"></span>&nbsp;&nbsp;&nbsp;
-                    <span class="glyphicon glyphicon-zoom-in" style="float:left;cursor:pointer;" data-toggle="modal" data-target="#Visualizar" title="visualizar o historico de ocorrencias!"></span>&nbsp;&nbsp;&nbsp;
-                    <span class="glyphicon glyphicon-remove" style="float:left;cursor:pointer;" data-toggle="modal" data-target="#remover" title="remover de forma logica o registro!"></span>&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;
-                    @*<input class="glyphicon glyphicon-th" type="button" name="name" value="EDITAR" style="color: white;text-shadow: yellow -1px 0px 5px;border-radius: 33px;background-color: darkslategrey;" />
-                        <input class="btn btn-default"  type="button" name="name" value="DELETAR" style="color: white;text-shadow: yellow -1px 0px 5px;border-radius: 33px;background-color: darkslategrey;" />
-                        <input class="btn btn-default"  type="button" name="name" value="ENVIAR" style="color: white;text-shadow: yellow -1px 0px 5px;border-radius: 33px;background-color: darkslategrey;" />*@
-                </td>
-            </tr>
-        }
-        }
-    </table>
-
-    <div class="modal fade" id="Edit">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal body..
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-
-            </div>
+    <div class="form-group">
+        <div class="row">
+            <table class="table" id="customers">
+                <tr style="padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #4CAF50; color: white;">
+                    <td>CIDADE</td>
+                    <td>BAIRRO</td>
+                    <td>ENCAMINHADO POR:</td>
+                    <td>DESLIGAMENTO</td>
+                    <td>TIPO DE VIOLENCIA</td>
+                    <td>VINC COM O AGRESSOR</td>
+                    <td>OBSERVAÇÕES</td>
+                    <td>AÇÕES</td>
+                </tr>
+                @{
+                var retorno = Model;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <span data-toggle="tooltip" title="Cidade onde mora!">@item.Cidade</span>
+                        </td>
+                        <td>
+                            <span>@item.Bairro</span>
+                        </td>
+                        <td>
+                            <span data-toggle="tooltip" title="Me">@item.EncaminhadaPor</span>
+                        </td>
+                        <td>
+                            <span data-toggle="tooltip" title="Hooray!">@item.Desligamento</span>
+                        </td>
+                        <td>
+                            <span data-toggle="tooltip" title="Hooray!">@item.TipodeViolência</span>
+                        </td>
+                        <td>
+                            <span data-toggle="tooltip" title="Hooray!">@item.VínculoComAgressor</span>
+                        </td>
+                        <td>
+                            <span>@item.Observacoes</span>
+                        </td>
+                        <td style="display: inline-flex;">
+                            &nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-edit" style="float:left;cursor:pointer;" data-toggle="modal" data-target="#Edit" title="Editar os dados cadastrados!"></span>&nbsp;&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-zoom-in" style="float:left;cursor:pointer;" data-toggle="modal" data-target="#Visualizar" title="visualizar o historico de ocorrencias!"></span>&nbsp;&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-remove" style="float:left;cursor:pointer;" data-toggle="modal" data-target="#remover" title="remover de forma logica o registro!"></span>&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;
+                            @*<input class="glyphicon glyphicon-th" type="button" name="name" value="EDITAR" style="color: white;text-shadow: yellow -1px 0px 5px;border-radius: 33px;background-color: darkslategrey;" />
+                            <input class="btn btn-default"  type="button" name="name" value="DELETAR" style="color: white;text-shadow: yellow -1px 0px 5px;border-radius: 33px;background-color: darkslategrey;" />
+                            <input class="btn btn-default"  type="button" name="name" value="ENVIAR" style="color: white;text-shadow: yellow -1px 0px 5px;border-radius: 33px;background-color: darkslategrey;" />*@
+                        </td>
+                    </tr>
+                }
+                }
+            </table>
         </div>
     </div>
 
-    <div class="modal fade" id="Visualizar">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        @*<div id="OcorrenciasGrid"
+                 ui-grid="OcorrenciasGrid"
+                 ui-grid-selection
+                 ui-grid-pagination
+                 ui-grid-auto-resize
+                 ui-grid-edit
+                 ui-grid-cellnav
+                 ui-grid-resize-columns
+                 ui-grid-move-columns
+                 resize style="overflow-y: no-display !important;float: left; margin-top: 0px;width: 100%; height: 400px !important;">
+            </div>*@
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal body..
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-
-            </div>
-        </div>
     </div>
 
 
-    <div class="modal fade" id="remover">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal body..
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</div>

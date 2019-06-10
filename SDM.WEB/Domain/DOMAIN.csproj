@@ -76,10 +76,13 @@
   <ItemGroup>
     <Compile Include="Entities\BaseEntity\BaseEntity.cs" />
     <Compile Include="Entities\EntitiModel\Cadastro.cs" />
+    <Compile Include="Entities\EntitiModel\ConfiguracaoChart.cs" />
+    <Compile Include="Entities\EntitiModel\TipoGraficos.cs" />
     <Compile Include="Entities\EntitiModel\User.cs" />
     <Compile Include="Entities\EntitiViewModel\AccountBindingModels.cs" />
     <Compile Include="Entities\EntitiViewModel\AccountViewModels.cs" />
     <Compile Include="Entities\EntitiViewModel\CadastroViewModel.cs" />
+    <Compile Include="Entities\EntitiModel\DadosGraficos.cs" />
     <Compile Include="Entities\EntitiViewModel\IdentityModels.cs" />
     <Compile Include="Entities\EntitiViewModel\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
