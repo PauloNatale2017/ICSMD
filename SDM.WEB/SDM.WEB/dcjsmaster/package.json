@@ -63,7 +63,7 @@
     "karma-sauce-launcher": "^1.2.0",
     "karma-summary-reporter": "^1.5.2",
     "load-grunt-tasks": "~4",
-    "marked": "^0.5.2",
+    "marked": "^0.7.0",
     "node-sass": "^4.10.0",
     "promise-polyfill": "^8.1.0",
     "reductio": "0.6.x",
